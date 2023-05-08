@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    @apply appearance-none;
+  }
+}
+
+.body {
+  @apply flex min-h-screen min-w-[320px] flex-col bg-black text-sm text-white md:text-base;
+}
+
+.button {
+  @apply inline-flex items-center justify-center px-4 py-2 ring-inset focus:outline-none;
+}
+
+.button-outline {
+  @apply button ring-1;
+}
+
+.button-solid {
+  @apply button font-semibold focus-visible:outline-2 focus-visible:outline-offset-2;
+}
+
+.button-outline-red {
+  @apply button-outline text-white ring-primary hover:text-primary focus-visible:outline-primary;
+}
+
+.button-solid-red {
+  @apply button-solid bg-primary text-white hover:bg-primary/0 hover:ring-1 hover:ring-primary focus-visible:outline-primary;
+}
+
+.button-solid-white {
+  @apply button-solid bg-white text-black hover:bg-white/0 hover:text-white hover:ring-1 hover:ring-white focus-visible:outline-primary;
+}
