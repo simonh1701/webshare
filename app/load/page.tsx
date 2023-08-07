@@ -96,7 +96,7 @@ export default function Share() {
               value={text}
               disabled={true}
               readOnly={true}
-              className="mb-4 block min-h-[120px] w-full border-0 bg-transparent p-4 font-mono text-sm ring-1 ring-inset ring-neutral-50/50 placeholder:text-neutral-50/50 focus:ring-2 focus:ring-inset focus:ring-primary sm:leading-6 md:text-base"
+              className="mb-4 block min-h-[120px] w-full border-0 bg-transparent p-4 font-mono text-sm ring-1 ring-inset ring-neutral-50/50 placeholder:text-neutral-50/50 focus:ring-2 focus:ring-inset focus:ring-primary disabled:text-white sm:leading-6 md:text-base"
             />
             <div className="flex w-full">
               <button
