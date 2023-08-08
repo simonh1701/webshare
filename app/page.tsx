@@ -90,11 +90,20 @@ function FeatureOverview() {
       <div className="relative overflow-hidden pt-8">
         <div className="mx-auto">
           <Image
+            priority
             src="/images/notebooks-connected-through-database.jpg"
             alt="Two notebooks connected through a server/database"
             width={6000}
             height={3374}
           />
+          <div className="flex w-full justify-end">
+            <a
+              href="https://www.freepik.com"
+              className="text-right text-xs text-neutral-600 hover:text-neutral-700"
+            >
+              Designed by fullvector / Freepik
+            </a>
+          </div>
         </div>
       </div>
       <div className="mt-8 sm:mt-12 md:mt-16">
