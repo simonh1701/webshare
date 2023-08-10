@@ -144,7 +144,7 @@ export default function Share() {
                     setText(e.target.value);
                   }}
                   required={true}
-                  className="mb-4 block min-h-[120px] w-full appearance-none border-0 bg-transparent font-mono text-sm ring-1 ring-inset ring-neutral-50/50 placeholder:text-neutral-50/50 focus:ring-2 focus:ring-inset focus:ring-primary sm:leading-6 md:text-base"
+                  className="mb-4 block max-h-[80vh] min-h-[120px] w-full appearance-none whitespace-nowrap border-0 bg-transparent font-mono text-sm ring-1 ring-inset ring-neutral-50/50 placeholder:text-neutral-50/50 focus:ring-2 focus:ring-inset focus:ring-primary sm:leading-6 md:text-base"
                 />
               </div>
               <div className="flex space-x-2">
