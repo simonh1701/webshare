@@ -89,15 +89,12 @@ export default function Share() {
             <label htmlFor="text" className="sr-only">
               Text
             </label>
-            <textarea
-              name="text"
+            <div
               id="text"
-              rows={16}
-              value={text}
-              disabled={true}
-              readOnly={true}
-              className="mb-4 block min-h-[120px] w-full border-0 bg-transparent p-4 font-mono text-sm ring-1 ring-inset ring-neutral-50/50 placeholder:text-neutral-50/50 focus:ring-2 focus:ring-inset focus:ring-primary disabled:text-white sm:leading-6 md:text-base"
-            />
+              className="form-textarea mb-4 block max-h-[80vh] min-h-[120px] w-full overflow-auto whitespace-pre border-0 bg-transparent p-4 font-mono text-sm ring-1 ring-inset ring-neutral-50/50 placeholder:text-neutral-50/50 focus:ring-2 focus:ring-inset focus:ring-primary disabled:text-white sm:leading-6 md:text-base"
+            >
+              {text}
+            </div>
             <div className="flex w-full">
               <button
                 type="button"

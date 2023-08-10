@@ -5,6 +5,11 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 
 export const metadata = {
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+  },
   title: "Webshare",
   description:
     "Securely share text snippets over the internet. Basically a web clipboard.",

@@ -17,16 +17,13 @@ export default function TextCopy({
 }) {
   return (
     <div className="flex">
-      <div className="relative flex flex-grow items-stretch">
+      <div className="relative flex flex-grow items-stretch overflow-x-auto">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
           {icon}
         </div>
-        <input
-          value={text}
-          disabled={true}
-          readOnly={true}
-          className="block w-full border-0 bg-transparent py-1.5 pl-10 pr-2 font-mono text-sm ring-1 ring-inset ring-neutral-50/50 md:text-base"
-        />
+        <div className="form-input flex w-full items-center border-0 bg-transparent py-1.5 pl-10 pr-2 font-mono text-sm ring-1 ring-inset ring-neutral-50/50 md:text-base">
+          <div className="overflow-x-auto whitespace-nowrap">{text}</div>
+        </div>
       </div>
       <button
         type="button"
