@@ -1,7 +1,12 @@
-import { describe, it, test, expect, beforeAll } from "@jest/globals";
+import { beforeAll, describe, expect, it } from "@jest/globals";
+import crypto from "node:crypto";
 
 import { decrypt, encrypt } from "./encryption";
 import { toBase58 } from "../util/base58";
+
+beforeAll(() => {
+  global.crypto = crypto.webcrypto;
+});
 
 describe("encryption with passphrase", () => {
   it("encrypts and decrypts correctly", async () => {
