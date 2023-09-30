@@ -33,7 +33,7 @@ export default function Home() {
         <div className="my-8 flex">
           <Link
             href="https://github.com/simonh1701/webshare"
-            className="relative overflow-hidden px-4 py-1.5 text-sm leading-6 text-neutral-300 ring-1 ring-neutral-300/10 duration-150 hover:ring-neutral-300/30"
+            className="relative overflow-hidden px-4 py-1.5 text-sm leading-6 text-neutral-400 ring-1 ring-neutral-400/30 duration-150 hover:ring-neutral-400/70"
           >
             Check out WebShare on{" "}
             <span className="font-semibold text-white">

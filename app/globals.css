@@ -33,6 +33,10 @@
   @apply button-solid bg-primary text-white hover:bg-primary/0 hover:ring-1 hover:ring-primary focus-visible:outline-primary;
 }
 
+.button-outline-white {
+  @apply button-outline text-white ring-white hover:text-neutral-500 hover:ring-neutral-500 focus-visible:outline-primary;
+}
+
 .button-solid-white {
   @apply button-solid bg-white text-black hover:bg-white/0 hover:text-white hover:ring-1 hover:ring-white focus-visible:outline-primary;
 }

@@ -1,12 +1,14 @@
 "use client";
 
 import {
+  ArrowDownTrayIcon,
   Cog6ToothIcon,
   ClipboardDocumentIcon,
   ClipboardDocumentCheckIcon,
 } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 
+import downloadTextAsFile from "@/app/load/downloadTextAsFile";
 import Message from "@/components/message";
 import { MessageType } from "@/components/message";
 import { decrypt } from "@/lib/encryption";
@@ -86,19 +88,29 @@ export default function Share() {
       <div className="mt-2">
         {text ? (
           <div>
-            <label htmlFor="text" className="sr-only">
-              Text
-            </label>
             <div
               id="text"
               className="form-textarea mb-4 block max-h-[80vh] min-h-[120px] w-full overflow-auto whitespace-pre border-0 bg-transparent p-4 font-mono text-sm ring-1 ring-inset ring-neutral-50/50 placeholder:text-neutral-50/50 focus:ring-2 focus:ring-inset focus:ring-primary disabled:text-white sm:leading-6 md:text-base"
             >
               {text}
             </div>
-            <div className="flex w-full">
+            <div className="flex w-full flex-col gap-2 md:flex-row md:gap-4">
               <button
                 type="button"
-                className="button-solid-white relative ml-auto mr-0 w-full md:w-auto"
+                className="button-outline-white relative ml-auto mr-0 w-full md:w-auto"
+                onClick={() => {
+                  downloadTextAsFile("webshare.txt", text);
+                }}
+              >
+                <ArrowDownTrayIcon
+                  className="-ml-0.5 mr-1 h-5 w-5"
+                  aria-hidden="true"
+                />
+                <span className="inline-block">Download as Text File</span>
+              </button>
+              <button
+                type="button"
+                className="button-solid-white relative mr-0 w-full md:w-auto"
                 onClick={() => {
                   navigator.clipboard.writeText(text);
                   setCopied(true);
@@ -107,12 +119,12 @@ export default function Share() {
               >
                 {copied ? (
                   <ClipboardDocumentCheckIcon
-                    className="-ml-0.5 h-5 w-5 md:mr-1"
+                    className="-ml-0.5 mr-1 h-5 w-5"
                     aria-hidden="true"
                   />
                 ) : (
                   <ClipboardDocumentIcon
-                    className="-ml-0.5 h-5 w-5 md:mr-1"
+                    className="-ml-0.5 mr-1 h-5 w-5"
                     aria-hidden="true"
                   />
                 )}
