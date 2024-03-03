@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 
+import { HistoryEntry } from "@/app/history/page";
 import downloadTextAsFile from "@/app/load/downloadTextAsFile";
 import Message from "@/components/message";
 import { MessageType } from "@/components/message";
@@ -71,6 +72,25 @@ export default function Share() {
           console.error(e);
           setError((e as Error).message);
         });
+
+      const history = JSON.parse(
+        sessionStorage.getItem("history") ?? "[]"
+      ) as Array<HistoryEntry>;
+
+      const newHistoryEntry: HistoryEntry = {
+        id: self.crypto.randomUUID(),
+        documentId: id,
+        operation: "Loaded",
+        date: new Date(),
+        additionalInfo:
+          remainingReads > 0
+            ? `${remainingReads} remaining reads`
+            : "Document deleted",
+      };
+
+      history.push(newHistoryEntry);
+
+      sessionStorage.setItem("history", JSON.stringify(history));
     } catch (e) {
       console.error(e);
       setError((e as Error).message);

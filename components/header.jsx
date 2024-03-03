@@ -18,9 +18,12 @@ export default function Header() {
           </div>
           <div className="flex items-center gap-x-5 md:gap-x-8">
             <Link
-              href="/load"
+              href="/history"
               className="inline-block px-4 py-2 hover:ring-1 hover:ring-white"
             >
+              History
+            </Link>
+            <Link href="/load" className="button-solid-white">
               Load
             </Link>
             <Link href="/share" className="button-solid-red">
