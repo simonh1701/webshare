@@ -7,6 +7,7 @@ import {
   LinkIcon,
 } from "@heroicons/react/24/outline";
 
+import { HistoryEntry } from "@/app/history/page";
 import Message from "@/components/message";
 import { MessageType } from "@/components/message";
 import TextCopy from "@/components/textcopy";
@@ -54,6 +55,24 @@ export default function Share() {
       const url = new URL(window.location.href);
       url.pathname = "/load";
       url.hash = id;
+
+      const history = JSON.parse(
+        sessionStorage.getItem("history") ?? "[]"
+      ) as Array<HistoryEntry>;
+
+      const newHistoryEntry: HistoryEntry = {
+        id: self.crypto.randomUUID(),
+        documentId: id,
+        operation: "Shared",
+        date: new Date(),
+        additionalInfo: `Document expires at ${new Date(
+          new Date().getTime() + ttl * ttlMultiplier * 1000
+        ).toUTCString()}`,
+      };
+
+      history.push(newHistoryEntry);
+
+      sessionStorage.setItem("history", JSON.stringify(history));
 
       setCopiedId(false);
       setCopiedLink(false);

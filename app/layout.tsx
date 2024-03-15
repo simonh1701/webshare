@@ -5,6 +5,11 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 
 export const metadata = {
+  metadataBase: new URL(
+    process.env.IS_LOCAL_ENVIRONMENT === "true"
+      ? "http://localhost:3000"
+      : `https://${process.env.VERCEL_URL || "webshare.simonh1701.app"}`
+  ),
   viewport: {
     width: "device-width",
     initialScale: 1,
@@ -17,7 +22,10 @@ export const metadata = {
     title: "Webshare",
     description:
       "Securely share text snippets over the internet. Basically a web clipboard.",
-    url: "https://webshare.simonh1701.app",
+    url:
+      process.env.IS_LOCAL_ENVIRONMENT === "true"
+        ? "http://localhost:3000"
+        : `https://${process.env.VERCEL_URL || "webshare.simonh1701.app"}`,
     siteName: "Webshare",
     locale: "en",
     type: "website",
