@@ -8,7 +8,7 @@ export const metadata = {
   metadataBase: new URL(
     process.env.IS_LOCAL_ENVIRONMENT === "true"
       ? "http://localhost:3000"
-      : process.env.VERCEL_URL || "https://webshare.simonh1701.app"
+      : `https://${process.env.VERCEL_URL || "webshare.simonh1701.app"}`
   ),
   viewport: {
     width: "device-width",
@@ -25,7 +25,7 @@ export const metadata = {
     url:
       process.env.IS_LOCAL_ENVIRONMENT === "true"
         ? "http://localhost:3000"
-        : process.env.VERCEL_URL || "https://webshare.simonh1701.app",
+        : `https://${process.env.VERCEL_URL || "webshare.simonh1701.app"}`,
     siteName: "Webshare",
     locale: "en",
     type: "website",
