@@ -13,7 +13,7 @@ export interface HistoryEntry {
 }
 
 export default function History() {
-  const [history, setHistory] = useState<HistoryEntry[]>([]);
+  const [history, setHistory] = useState<HistoryEntry[] | undefined>(undefined);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("history");
@@ -34,7 +34,106 @@ export default function History() {
       <h1 className="tracking-tigh mb-6 text-3xl font-bold sm:text-4xl">
         History
       </h1>
-      {history.length > 0 ? (
+      {history == undefined ? (
+        <ul role="list" className="animate-pulse divide-y divide-neutral-500">
+          <li key="0" className="relative flex items-center space-x-4 py-4">
+            <div className="min-w-0 flex-auto">
+              <div className="flex items-center gap-x-3">
+                <h2 className="min-w-0 text-sm font-semibold leading-6 text-white">
+                  <div className="flex gap-x-2">
+                    <div className="my-auto h-6 w-12 truncate bg-neutral-500" />
+                    <span className="w-[5px] text-center leading-6 text-neutral-500">
+                      /
+                    </span>
+                    <div className="my-auto h-6 w-36 truncate bg-neutral-500" />
+                    <span className="absolute inset-0" />
+                  </div>
+                </h2>
+              </div>
+              <div className="mt-3 flex items-center gap-x-2 text-xs leading-5 text-neutral-300">
+                <div className="my-auto h-5 w-12 truncate bg-neutral-500" />
+                <div className="w-[5px]">
+                  <svg
+                    viewBox="0 0 2 2"
+                    className="mx-auto h-0.5 w-0.5 flex-none fill-neutral-500"
+                  >
+                    <circle cx={1} cy={1} r={1} />
+                  </svg>
+                </div>
+                <div className="my-auto h-5 w-64 truncate bg-neutral-500" />
+              </div>
+            </div>
+            <ChevronRightIcon
+              className="h-5 w-5 flex-none text-neutral-300"
+              aria-hidden="true"
+            />
+          </li>
+          <li key="1" className="relative flex items-center space-x-4 py-4">
+            <div className="min-w-0 flex-auto">
+              <div className="flex items-center gap-x-3">
+                <h2 className="min-w-0 text-sm font-semibold leading-6 text-white">
+                  <div className="flex gap-x-2">
+                    <div className="my-auto h-6 w-12 truncate bg-neutral-500" />
+                    <span className="w-[5px] text-center leading-6 text-neutral-500">
+                      /
+                    </span>
+                    <div className="my-auto h-6 w-36 truncate bg-neutral-500" />
+                    <span className="absolute inset-0" />
+                  </div>
+                </h2>
+              </div>
+              <div className="mt-3 flex items-center gap-x-2 text-xs leading-5 text-neutral-300">
+                <div className="my-auto h-5 w-12 truncate bg-neutral-500" />
+                <div className="w-[5px]">
+                  <svg
+                    viewBox="0 0 2 2"
+                    className="mx-auto h-0.5 w-0.5 flex-none fill-neutral-500"
+                  >
+                    <circle cx={1} cy={1} r={1} />
+                  </svg>
+                </div>
+                <div className="my-auto h-5 w-64 truncate bg-neutral-500" />
+              </div>
+            </div>
+            <ChevronRightIcon
+              className="h-5 w-5 flex-none text-neutral-300"
+              aria-hidden="true"
+            />
+          </li>
+          <li key="2" className="relative flex items-center space-x-4 py-4">
+            <div className="min-w-0 flex-auto">
+              <div className="flex items-center gap-x-3">
+                <h2 className="min-w-0 text-sm font-semibold leading-6 text-white">
+                  <div className="flex gap-x-2">
+                    <div className="my-auto h-6 w-12 truncate bg-neutral-500" />
+                    <span className="w-[5px] text-center leading-6 text-neutral-500">
+                      /
+                    </span>
+                    <div className="my-auto h-6 w-36 truncate bg-neutral-500" />
+                    <span className="absolute inset-0" />
+                  </div>
+                </h2>
+              </div>
+              <div className="mt-3 flex items-center gap-x-2 text-xs leading-5 text-neutral-300">
+                <div className="my-auto h-5 w-12 truncate bg-neutral-500" />
+                <div className="w-[5px]">
+                  <svg
+                    viewBox="0 0 2 2"
+                    className="mx-auto h-0.5 w-0.5 flex-none fill-neutral-500"
+                  >
+                    <circle cx={1} cy={1} r={1} />
+                  </svg>
+                </div>
+                <div className="my-auto h-5 w-64 truncate bg-neutral-500" />
+              </div>
+            </div>
+            <ChevronRightIcon
+              className="h-5 w-5 flex-none text-neutral-300"
+              aria-hidden="true"
+            />
+          </li>
+        </ul>
+      ) : history.length > 0 ? (
         <ul role="list" className="divide-y divide-neutral-100/50">
           {history.map((historyEntry) => {
             const url = new URL(window.location.href);
@@ -52,28 +151,34 @@ export default function History() {
                   <div className="flex items-center gap-x-3">
                     <h2 className="min-w-0 text-sm font-semibold leading-6 text-white">
                       <Link href={href} className="flex gap-x-2">
-                        <span className="truncate">
+                        <span className="truncate leading-6">
                           {historyEntry.operation}
                         </span>
-                        <span className="text-neutral-300">/</span>
-                        <span className="whitespace-nowrap font-mono">
+                        <span className="w-[5px] text-center leading-6 text-neutral-300">
+                          /
+                        </span>
+                        <span className="whitespace-nowrap font-mono leading-6">
                           {historyEntry.documentId}
                         </span>
                         <span className="absolute inset-0" />
                       </Link>
                     </h2>
                   </div>
-                  <div className="mt-3 flex items-center gap-x-2.5 text-xs leading-5 text-neutral-300">
-                    <p className="whitespace-nowrap">
+                  <div className="mt-3 flex items-center gap-x-2 text-xs leading-5 text-neutral-300">
+                    <p className="whitespace-nowrap leading-5">
                       {getRelativeTime(historyEntry.date)}
                     </p>
-                    <svg
-                      viewBox="0 0 2 2"
-                      className="h-0.5 w-0.5 flex-none fill-neutral-300"
-                    >
-                      <circle cx={1} cy={1} r={1} />
-                    </svg>
-                    <p className="truncate">{historyEntry.additionalInfo}</p>
+                    <div className="w-[5px]">
+                      <svg
+                        viewBox="0 0 2 2"
+                        className="mx-auto h-0.5 w-0.5 flex-none fill-neutral-500"
+                      >
+                        <circle cx={1} cy={1} r={1} />
+                      </svg>
+                    </div>
+                    <p className="truncate leading-5">
+                      {historyEntry.additionalInfo}
+                    </p>
                   </div>
                 </div>
                 <ChevronRightIcon
